@@ -45,7 +45,7 @@
       "purpose": "any"
     }
   ],
-  "start_url": "https://calculator-livid-eta.vercel.app/",
+  "start_url": "https://num-comparator.vercel.app/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
