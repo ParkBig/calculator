@@ -82,7 +82,8 @@ const Result = () => {
               <Img src={ai} />
             </ImgDiv>
             <UpperResultDiv>
-              최상단 버튼을 클릭하여 비교할 데이터 생성 할 수 있습니다.<br/><br/>
+              최상단 버튼을 클릭하여 비교할 데이터 생성 할 수 있습니다.<br/>
+              ( 최대 5개 )<br/><br/>
               그래프안의 데이터를 클릭하여 제거 할 수 있습니다.
             </UpperResultDiv>
             <ImgDiv where="flex-end">
