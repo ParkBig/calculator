@@ -3,8 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { createGlobalStyle } from "styled-components";
 
 function App() {
-  console.log(process.env.REACT_APP_KAKAO_REDIRECT_URI)
-  console.log(process.env.REACT_APP_FUCK)
   return (
     <>
       <GlobalStyle />
