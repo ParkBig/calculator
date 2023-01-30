@@ -9,7 +9,7 @@ const MainPage = () => {
     <Wrap>
       <Helmet>
         <title>
-          Compare this!
+          calculator!
         </title>
       </Helmet>
       <NavBar />
