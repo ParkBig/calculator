@@ -84,7 +84,8 @@ const Result = () => {
             <UpperResultDiv>
               최상단 버튼을 클릭하여 비교할 데이터 생성 할 수 있습니다.<br/>
               ( 최대 5개 )<br/><br/>
-              그래프안의 데이터를 클릭하여 제거 할 수 있습니다.
+              그래프안의 데이터를 클릭하여 제거 할 수 있습니다.<br/><br/>
+              PWA 사용이 가능합니다. (검색창 우측 상단 다운로드.)
             </UpperResultDiv>
             <ImgDiv where="flex-end">
               <Img src={ai2} />
