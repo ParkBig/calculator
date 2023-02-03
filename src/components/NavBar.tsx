@@ -1,13 +1,19 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { compareStore } from "../store/configureStore";
+import Calculator from "./Calculator";
 
 
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const inc = compareStore(state => state.inc);
   const count = compareStore(state => state.count);
   const increase = () => {
     if (count === 5) return;
     inc();
+  }
+  const toggleCalculator = () => {
+    setIsOpen(prev => !prev);
   }
   return (
     <Wrap>
@@ -23,7 +29,14 @@ const NavBar = () => {
       </UpperDiv>
       <UpperDiv>
         <NavBarDiv>
-          업그레이드를 기대해주세요!
+          <ClickToCalDiv onClick={toggleCalculator}>
+            클릭하여 계산기!
+          </ClickToCalDiv>
+          {isOpen &&
+            <CalDiv>
+              <Calculator />
+            </CalDiv>
+          }     
         </NavBarDiv>
       </UpperDiv>
     </Wrap>
@@ -71,9 +84,25 @@ const ClickDiv = styled.div`
 `;
 const NavBarDiv = styled.div`
   height: 100%;
+  width: 70%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-left: 10%;
   color: white;
+  position: relative;
+`;
+const ClickToCalDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+const CalDiv = styled.div`
+  width: 100%;
+  height: 370%;
+  top: 100%;
+  position: absolute;
 `;
