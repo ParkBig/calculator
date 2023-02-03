@@ -19,7 +19,7 @@ const NavBar = () => {
     <Wrap>
       <UpperDiv>
         <NameDiv>
-          Calculate your number!
+          Num-Comparator
         </NameDiv>
       </UpperDiv>
       <UpperDiv>
@@ -29,8 +29,8 @@ const NavBar = () => {
       </UpperDiv>
       <UpperDiv>
         <NavBarDiv>
-          <ClickToCalDiv onClick={toggleCalculator}>
-            클릭하여 계산기!
+          <ClickToCalDiv>
+            업그레이드를 기대해주세요!
           </ClickToCalDiv>
           {isOpen &&
             <CalDiv>
