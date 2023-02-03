@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { compareStore, toggleChoiceStore } from "../store/configureStore";
 import useAllCalculate from "./functions/useAllCalculate";
@@ -11,7 +11,7 @@ const Result = () => {
   const isChoice = toggleChoiceStore(state => state.isChoice);
   const toggleChoice = toggleChoiceStore(state => state.toggleChoice);
   const data = compareStore(state => state.data);
-
+  
   const choice = () => {
     // toggleChoice();
   }
