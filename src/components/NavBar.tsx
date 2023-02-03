@@ -19,7 +19,7 @@ const NavBar = () => {
     <Wrap>
       <UpperDiv>
         <NameDiv>
-          Num-Comparator
+          Num Comparator
         </NameDiv>
       </UpperDiv>
       <UpperDiv>
@@ -30,7 +30,7 @@ const NavBar = () => {
       <UpperDiv>
         <NavBarDiv>
           <ClickToCalDiv>
-            업그레이드를 기대해주세요!
+            Will Upgrade Soon!
           </ClickToCalDiv>
           {isOpen &&
             <CalDiv>
