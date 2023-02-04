@@ -1,13 +1,13 @@
 export interface IAllData {
-  id?: number;
-  sum?: number;
-  avg?: number;
-  max?: number;
-  min?: number;
-  maxMinusMin?: number;
-  maxMinusAvg?: number;
-  avgMinusMin?: number;
-  dataCount?: number;
+  id: number;
+  sum: number;
+  avg: number;
+  max: number;
+  min: number;
+  maxMinusMin: number;
+  maxMinusAvg: number;
+  avgMinusMin: number;
+  dataCount: number;
 }
 
 export interface IData {

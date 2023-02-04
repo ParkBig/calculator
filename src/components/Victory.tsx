@@ -3,17 +3,18 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { VictoryPie } from "victory-pie";
 import { compareStore } from "../store/configureStore";
-import { IAllData, IData, IForm } from "../__interface__/interface";
+import { IAllData, IData, IForm } from "../types/interface";
 import DataAnalysis from "./DataAnalysis";
-import useCalculate from "./functions/useCalculate";
-import { ReactComponent as Bugger} from "./img/svg/burgerLine.svg"
-import enter from "./img/png/enter.png"
-import waste from "./img/png/waste.png"
+import useCalculate from "../hooks/useCalculate";
+import { ReactComponent as Bugger} from "../assets/image/svg/burgerLine.svg"
+import enter from "../assets/image/png/enter.png"
+import waste from "../assets/image/png/waste.png"
 
 const Victory = ({ prop }: { prop: IAllData }) => {
   const [data, setData] = useState<IData[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const { handleSubmit, register, setValue } = useForm<IForm>();
+  const calData = useCalculate(data, prop.id);
 
   const count = compareStore(state => state.count);
   const del = compareStore(state => state.del);
@@ -27,35 +28,32 @@ const Victory = ({ prop }: { prop: IAllData }) => {
   }
   const deleteData = () => {
     if (count === 1) return;
-    del(prop.id as number);
+    del(prop.id);
   }
   
-  const calData = useCalculate(data, prop.id as number);
-
-  // console.log(data)
   return (
-    <UpperVictoryDiv counts={count}>
+    <WrapVictoryDiv counts={count}>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <DeleteDiv>
+        <Options>
           <Bugger onClick={modalOpen} width="60%" height="60%" stroke="black"/>
           <Modal>
             {isOpen ?
               <>
-                <ModalBtnDiv onClick={deleteData}>
+                <ModalBtn onClick={deleteData}>
                   <Img src={waste} />
-                </ModalBtnDiv>
+                </ModalBtn>
               </>
               :
               null
             }
           </Modal>
-        </DeleteDiv>
+        </Options>
         <Input {...register(`${prop.id}-data`, {required: true})} placeholder="Put Positive Number to calculation" />
         <Btn>
           <EnterImg src={enter} />
         </Btn>
       </Form>
-      <VictoryDiv>
+      <UpperVictory>
         <VictoryPie
           data={data.length ? data : [{ x: "Insert Data", y: 100 }]}
           innerRadius={35}
@@ -78,17 +76,17 @@ const Victory = ({ prop }: { prop: IAllData }) => {
             }
           }]}
         />
-      </VictoryDiv>
-      <DataAnalysisDiv>
+      </UpperVictory>
+      <WrapDataAnalysis>
         <DataAnalysis calData={calData} />
-      </DataAnalysisDiv>
-    </UpperVictoryDiv>
+      </WrapDataAnalysis>
+    </WrapVictoryDiv>
   )
 }
 
 export default React.memo(Victory);
 
-const UpperVictoryDiv = styled.div<{counts: number}>`
+const WrapVictoryDiv = styled.div<{counts: number}>`
   height: 95%;
   width: ${prop => prop.counts > 4 ? "19%" : prop.counts > 3 ? "20%" : prop.counts > 2 ? "25%" : prop.counts > 1 ? "30%" : "30%"};
   display: flex;
@@ -108,7 +106,7 @@ const Form = styled.form`
   margin-top: 3%;
   gap: 2%;
 `;
-const DeleteDiv = styled.div`
+const Options = styled.div`
   height: 100%;
   width: 11.5%;
   display: flex;
@@ -129,7 +127,7 @@ const Modal = styled.div`
 
   z-index: 9999;
 `;
-const ModalBtnDiv = styled.div`
+const ModalBtn = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -159,14 +157,14 @@ const Btn = styled.button`
   border: none;
   background-color: transparent;
 `;
-const VictoryDiv = styled.div`
+const UpperVictory = styled.div`
   width: 100%;
   height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const DataAnalysisDiv = styled.div`
+const WrapDataAnalysis = styled.div`
   width: 100%;
   height: 37%;
   display: flex;

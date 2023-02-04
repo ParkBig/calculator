@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { compareStore } from "../../store/configureStore";
-import { ICalData, IData } from "../../__interface__/interface";
+import { compareStore } from "../store/configureStore";
+import { ICalData, IData } from "../types/interface";
 
 const useCalculate = (data: IData[], id: number) => {
   const updateData = compareStore(state => state.updateData);
@@ -15,7 +15,7 @@ const useCalculate = (data: IData[], id: number) => {
   const dataCount: number = data.length;
 
   if (data.length !==0 ) {
-    data.map(data => sum += data.y);
+    data.forEach(data => sum += data.y);
   }
   avg = (data.length === 0) ? sum : sum / data.length;
   max = (data.length === 0) ? sum : Math.max.apply(Math, data.map(data => data.y));

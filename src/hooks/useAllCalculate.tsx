@@ -1,4 +1,4 @@
-import { IAllCalData, IAllData } from "../../__interface__/interface";
+import { IAllCalData, IAllData } from "../types/interface";
 
 
 const useAllCalculate = (allData: IAllData[]) => {

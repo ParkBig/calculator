@@ -1,41 +1,41 @@
 import styled from "styled-components";
-import { IAllData } from "../__interface__/interface";
+import { IAllData } from "../types/interface";
 
 const DataAnalysis = ({calData}: {calData: IAllData}) => {
   return (
-    <UpperDiv>
-      <UpperMainDataDiv>
-        <MainDataDiv>
+    <Wrap>
+      <UpperMainData>
+        <MainData>
           합: {calData.sum}
-        </MainDataDiv>
-        <MainDataDiv>
+        </MainData>
+        <MainData>
           평균값: {calData.avg}
-        </MainDataDiv>
-        <MainDataDiv>
+        </MainData>
+        <MainData>
           최대값: {calData.max}
-        </MainDataDiv>
-        <MainDataDiv>
+        </MainData>
+        <MainData>
           최소값: {calData.min}
-        </MainDataDiv>
-      </UpperMainDataDiv>
-      <UpperSubDataDiv>
-        <SubDataDiv>
+        </MainData>
+      </UpperMainData>
+      <UpperSubData>
+        <SubData>
           최대값 - 최소값: {calData.maxMinusMin}
-        </SubDataDiv>
-        <SubDataDiv>
+        </SubData>
+        <SubData>
           최대값 - 평균값: {calData.maxMinusAvg}
-        </SubDataDiv>
-        <SubDataDiv>
+        </SubData>
+        <SubData>
           평균값 - 최소값: {calData.avgMinusMin}
-        </SubDataDiv>
-      </UpperSubDataDiv>
-    </UpperDiv>
+        </SubData>
+      </UpperSubData>
+    </Wrap>
   )
 }
 
 export default DataAnalysis;
 
-const UpperDiv = styled.div`
+const Wrap = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -43,7 +43,7 @@ const UpperDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const UpperMainDataDiv = styled.div`
+const UpperMainData = styled.div`
   width: 90%;
   height: 40%;
   display: grid;
@@ -52,14 +52,14 @@ const UpperMainDataDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const MainDataDiv = styled.div`
+const MainData = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const UpperSubDataDiv = styled.div`
+const UpperSubData = styled.div`
   width: 90%;
   height: 60%;
   display: flex;
@@ -67,7 +67,7 @@ const UpperSubDataDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const SubDataDiv = styled.div`
+const SubData = styled.div`
   width: 100%;
   height: 33%;
   display: flex;

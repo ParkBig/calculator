@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { compareStore } from "../store/configureStore";
 import Calculator from "./Calculator";
 
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const inc = compareStore(state => state.inc);
   const count = compareStore(state => state.count);
-  const increase = () => {
+  const increaseDataList = () => {
     if (count === 5) return;
     inc();
   }
@@ -18,26 +17,26 @@ const NavBar = () => {
   return (
     <Wrap>
       <UpperDiv>
-        <NameDiv>
+        <Name>
           Num Comparator
-        </NameDiv>
+        </Name>
       </UpperDiv>
       <UpperDiv>
-        <ClickDiv onClick={increase}>
+        <ClickToIncrease onClick={increaseDataList}>
           Click Me to Increase.
-        </ClickDiv>
+        </ClickToIncrease>
       </UpperDiv>
       <UpperDiv>
-        <NavBarDiv>
-          <ClickToCalDiv>
+        <NavigationBar>
+          <ClickToOpenCal onClick={toggleCalculator}>
             Will Upgrade Soon!
-          </ClickToCalDiv>
+          </ClickToOpenCal>
           {isOpen &&
-            <CalDiv>
+            <WrapCalculator>
               <Calculator />
-            </CalDiv>
+            </WrapCalculator>
           }     
-        </NavBarDiv>
+        </NavigationBar>
       </UpperDiv>
     </Wrap>
   )
@@ -62,7 +61,7 @@ const UpperDiv = styled.div`
   align-items: center;
   font-size: 2em;
 `;
-const NameDiv = styled.div`
+const Name = styled.div`
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -70,7 +69,7 @@ const NameDiv = styled.div`
   margin-right: 20%;
   color: white;
 `;
-const ClickDiv = styled.div`
+const ClickToIncrease = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -82,7 +81,7 @@ const ClickDiv = styled.div`
   color: white;
   cursor: pointer;
 `;
-const NavBarDiv = styled.div`
+const NavigationBar = styled.div`
   height: 100%;
   width: 70%;
   display: flex;
@@ -92,7 +91,7 @@ const NavBarDiv = styled.div`
   color: white;
   position: relative;
 `;
-const ClickToCalDiv = styled.div`
+const ClickToOpenCal = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -100,7 +99,7 @@ const ClickToCalDiv = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-const CalDiv = styled.div`
+const WrapCalculator = styled.div`
   width: 100%;
   height: 370%;
   top: 100%;

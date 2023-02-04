@@ -2,19 +2,18 @@ import styled from "styled-components";
 import { compareStore } from "../store/configureStore";
 import Victory from "./Victory";
 
-
 const Compare = () => {
-  const data = compareStore(state => state.data)
+  const dataList = compareStore(state => state.data)
   return (
-    <UpperCompareDiv>
-      {data.map((prop) => <Victory key={prop.id} prop={prop}/>)}
-    </UpperCompareDiv>
+    <UpperCompare>
+      {dataList.map((data) => <Victory key={data.id} prop={data}/>)}
+    </UpperCompare>
   )
 }
 
 export default Compare;
 
-const UpperCompareDiv = styled.div`
+const UpperCompare = styled.div`
   height: 70%;
   width: 100%;
   display: flex;

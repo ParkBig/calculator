@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IChoice, ICount } from "../__interface__/interface";
+import { IChoice, ICount } from "../types/interface";
 
 export const defaultData = {
   sum: 0,
