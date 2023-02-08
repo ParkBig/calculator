@@ -13,7 +13,6 @@ import { ReactComponent as Reset } from "../assets/image/svg/restart.svg";
 import enter from "../assets/image/png/enter.png";
 import waste from "../assets/image/png/waste.png";
 import csv from "../assets/image/png/csv.png";
-import { type } from "os";
 
 const header = [
   { label: "순번", key: "order" },
@@ -42,7 +41,7 @@ const CompareData = ({ prop }: { prop: IAllData }) => {
     if (formData[`${prop.id}-data`] <= 0) {
       alert("0보다 큰 실수만 입력 가능합니다");
       return;
-    }
+    };
     setData(prev => [...prev, {order: data.length+1, data: +formData[`${prop.id}-data`]}]);
     setValue(`${prop.id}-data`, "");
   };

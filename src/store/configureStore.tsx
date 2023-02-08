@@ -10,7 +10,7 @@ export const defaultData = {
   maxMinusAvg: null,
   avgMinusMin: null,
   dataCount: 0,
-}
+};
 
 export const useCompareStore = create<ICount>(set => ({
   comparatorList: [{id: Date.now(), ...defaultData}],

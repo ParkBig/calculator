@@ -22,12 +22,12 @@ const Result = () => {
           <AllBarGraph allCalData={allCalData} />
         </WrapResults>
         :
-        <WrapResults>
+        <Explain>
           최상단 버튼을 클릭하여 비교할 데이터 생성 할 수 있습니다.<br/>
           ( 최대 5개 )<br/><br/>
           그래프안의 데이터를 클릭하여 제거 할 수 있습니다.<br/><br/>
           PWA 사용이 가능합니다. (검색창 우측 상단 다운로드.)
-        </WrapResults>
+        </Explain>
       }
       <ImgDiv where="flex-end">
         <Img src={allCalData.allMax[0] ? darkAi2 : ai2} />
@@ -63,12 +63,28 @@ const WrapResults = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.3em;
   font-weight: bolder;
-  white-space: pre-wrap;
   text-align: center;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   cursor: pointer;
+`;
+const Explain = styled.div`
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  font-weight: bolder;
+  text-align: center;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.6);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
+  }
 `;

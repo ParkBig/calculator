@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { useCompareStore } from "../store/configureStore";
 import Calculator from "./Calculator";
 
-// will upgrade
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const addComparator = useCompareStore(state => state.addComparator);
@@ -35,6 +33,7 @@ const NavBar = () => {
           </ClickToOpenCal>
           {isOpen &&
             <WrapCalculator>
+              {/* this will upgrade next version */}
               <Calculator />
             </WrapCalculator>
           }     
@@ -62,6 +61,10 @@ const UpperDiv = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 2em;
+  
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
+  }
 `;
 const Name = styled.div`
   height: 100%;
@@ -86,7 +89,6 @@ const ClickToIncrease = styled.div`
   :hover {
     scale: 1.1;
   }
-
   transition: 0.2s;
 `;
 const NavigationBar = styled.div`
