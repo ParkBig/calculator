@@ -17,7 +17,9 @@ const PieGraph = ({ data, setData }: { data: IData[], setData: React.Dispatch<Re
         labels={({ datum }) => (datum.order === "데이터를 입력해보세요") ? "데이터를 입력해보세요" : datum.data}
         innerRadius={({index}) => index === nowHover ? 70 : 55 }
         radius={({ index }) => index === nowHover ? 145 : 130 }
-        labelRadius={({ index }) => index === nowHover ? 155 : 140 }
+        //victory라이브러리의 d.ts파일 labelRadius의 index 파라미터가 정의 안되어있음.
+        //@ts-ignore
+        labelRadius={({index}) => index === nowHover ? 155 : 140}
         animate={{
           animationWhitelist: ["radius", "labelRadius", "innerRadius"],
           duration: 300,
