@@ -1,106 +1,107 @@
 import styled from "styled-components";
 
+// this will update next version
 const Calculator = () => {
   return (
-    <UpperDiv>
-      <ResultDiv>
+    <Wrap>
+      <ResultText>
         결과
-      </ResultDiv>
-      <BtnDiv>
-        <NumDiv>
-          <Num>
+      </ResultText>
+      <UpperButtons>
+        <Buttons>
+          <Btn>
             7
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             8
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             9
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             4
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             5
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             6
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             1
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             2
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             3
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             0
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             .
-          </Num>
-          <Num>
+          </Btn>
+          <Btn>
             =
-          </Num>
-        </NumDiv>
-        <DoItDiv>
-          <Operator>
+          </Btn>
+        </Buttons>
+        <UpperOperatorButtons>
+          <OperatorBtn>
             /
-          </Operator>
-          <Operator>
+          </OperatorBtn>
+          <OperatorBtn>
             *
-          </Operator>
-          <Operator>
+          </OperatorBtn>
+          <OperatorBtn>
             -
-          </Operator>
-          <Operator>
+          </OperatorBtn>
+          <OperatorBtn>
             +
-          </Operator>
-        </DoItDiv>
-      </BtnDiv>
-    </UpperDiv>
+          </OperatorBtn>
+        </UpperOperatorButtons>
+      </UpperButtons>
+    </Wrap>
   )
 }
 
 export default Calculator;
 
-const UpperDiv = styled.div`
+const Wrap = styled.div`
   height: 100%;
   width: 100%;
   background-color: red;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
-const ResultDiv = styled.div`
+const ResultText = styled.div`
   height: 35%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const BtnDiv = styled.div`
+const UpperButtons = styled.div`
   height: 65%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const NumDiv = styled.div`
+const Buttons = styled.div`
   width: 77%;
   height: 100%;
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
 `;
-const Num = styled.div`
+const Btn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const DoItDiv = styled.div`
+const UpperOperatorButtons = styled.div`
   width: 23%;
   height: 100%;
   display: flex;
@@ -108,7 +109,7 @@ const DoItDiv = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
-const Operator = styled.div`
+const OperatorBtn = styled.div`
   height: 22%;
   width: 100%;
   display: flex;

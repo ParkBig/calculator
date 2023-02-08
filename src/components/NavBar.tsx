@@ -1,43 +1,43 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { compareStore } from "../store/configureStore";
+import { useCompareStore } from "../store/configureStore";
 import Calculator from "./Calculator";
-
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const inc = compareStore(state => state.inc);
-  const count = compareStore(state => state.count);
-  const increase = () => {
-    if (count === 5) return;
-    inc();
+  const addComparator = useCompareStore(state => state.addComparator);
+  const comparatorList = useCompareStore(state => state.comparatorList);
+  const increaseDataList = () => {
+    if (comparatorList.length === 5) return;
+    addComparator();
   }
   const toggleCalculator = () => {
-    setIsOpen(prev => !prev);
+    // setIsOpen(prev => !prev);
   }
   return (
     <Wrap>
       <UpperDiv>
-        <NameDiv>
+        <Name>
           Num Comparator
-        </NameDiv>
+        </Name>
       </UpperDiv>
       <UpperDiv>
-        <ClickDiv onClick={increase}>
+        <ClickToIncrease onClick={increaseDataList}>
           Click Me to Increase.
-        </ClickDiv>
+        </ClickToIncrease>
       </UpperDiv>
       <UpperDiv>
-        <NavBarDiv>
-          <ClickToCalDiv>
+        <NavigationBar>
+          <ClickToOpenCal onClick={toggleCalculator}>
             Will Upgrade Soon!
-          </ClickToCalDiv>
+          </ClickToOpenCal>
           {isOpen &&
-            <CalDiv>
+            <WrapCalculator>
+              {/* this will upgrade next version */}
               <Calculator />
-            </CalDiv>
+            </WrapCalculator>
           }     
-        </NavBarDiv>
+        </NavigationBar>
       </UpperDiv>
     </Wrap>
   )
@@ -61,8 +61,12 @@ const UpperDiv = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 2em;
+  
+  @media screen and (max-width: 1024px) {
+    font-size: 1em;
+  }
 `;
-const NameDiv = styled.div`
+const Name = styled.div`
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -70,7 +74,7 @@ const NameDiv = styled.div`
   margin-right: 20%;
   color: white;
 `;
-const ClickDiv = styled.div`
+const ClickToIncrease = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -81,8 +85,13 @@ const ClickDiv = styled.div`
   background-color: black;
   color: white;
   cursor: pointer;
+
+  :hover {
+    scale: 1.1;
+  }
+  transition: 0.2s;
 `;
-const NavBarDiv = styled.div`
+const NavigationBar = styled.div`
   height: 100%;
   width: 70%;
   display: flex;
@@ -92,7 +101,7 @@ const NavBarDiv = styled.div`
   color: white;
   position: relative;
 `;
-const ClickToCalDiv = styled.div`
+const ClickToOpenCal = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -100,7 +109,7 @@ const ClickToCalDiv = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-const CalDiv = styled.div`
+const WrapCalculator = styled.div`
   width: 100%;
   height: 370%;
   top: 100%;
