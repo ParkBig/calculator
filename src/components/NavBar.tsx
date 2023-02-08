@@ -1,18 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { compareStore } from "../store/configureStore";
+import { useCompareStore } from "../store/configureStore";
 import Calculator from "./Calculator";
+
+// will upgrade
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const inc = compareStore(state => state.inc);
-  const count = compareStore(state => state.count);
+  const addComparator = useCompareStore(state => state.addComparator);
+  const comparatorList = useCompareStore(state => state.comparatorList);
   const increaseDataList = () => {
-    if (count === 5) return;
-    inc();
+    if (comparatorList.length === 5) return;
+    addComparator();
   }
   const toggleCalculator = () => {
-    setIsOpen(prev => !prev);
+    // setIsOpen(prev => !prev);
   }
   return (
     <Wrap>
@@ -80,6 +82,12 @@ const ClickToIncrease = styled.div`
   background-color: black;
   color: white;
   cursor: pointer;
+
+  :hover {
+    scale: 1.1;
+  }
+
+  transition: 0.2s;
 `;
 const NavigationBar = styled.div`
   height: 100%;

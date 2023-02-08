@@ -1,37 +1,47 @@
 import { IAllCalData, IAllData } from "../types/interface";
 
+// 솔트해서 0아닐떈 0번인데스 일떄는 1번인덱스로
 
-const useAllCalculate = (allData: IAllData[]) => {
-  let allSum: number = 0;
-  let allAvg: number;
-  let allMax: number;
-  let allMin: number;
-  let allDataCount: number = 0;
-  let allMaxMinusMin: number;
-  let allMaxMinusAvg: number;
-  let allAvgMinusMin: number;
+const useAllCalculate = (comparatorList: IAllData[]) => {
+  const allCalData: IAllCalData = {
+    allSum: [0, 0],
+    allAvg: [0, 0],
+    allMax: [0, 0],
+    allMin: [0, 0],
+    allMaxMinusMin: 0,
+    allMaxMinusAvg: 0,
+    allAvgMinusMin: 0,
+    allDataCount: 0
+  };
 
-  allData.map((data) => {
-    allSum += data.sum as number;
-    allDataCount += data.dataCount as number;
-    return null;
+  const sumList = comparatorList.map(data => data.sum ? data.sum : 0);
+  const avgList = comparatorList.map(data => data.avg ? data.avg : 0);
+  const maxList = comparatorList.map(data => data.max ? data.max : 0);
+  const minList = comparatorList.map(data => data.min ? data.min : 0);
+
+
+  comparatorList.forEach((data) => {
+    allCalData.allSum[0] += +data.sum.toFixed(2);
+    allCalData.allDataCount += data.dataCount;
   });
 
-  allAvg = (allSum === 0) ? 0 : allSum / allDataCount;
-  allMax = Math.max.apply(Math, allData.map(data => data.max ? data.max : -1/0));
-  allMin = Math.min.apply(Math, allData.map(data => data.min ? data.min : 1/0));
-  allMaxMinusMin = allMax - allMin;
-  allMaxMinusAvg = allMax - allAvg;
-  allAvgMinusMin = allAvg - allMin;
+  if (allCalData.allDataCount) {
+    allCalData.allSum[1] = +Math.max.apply(Math, sumList).toFixed(2)
+    allCalData.allSum[2] = sumList.findIndex(element => element === allCalData.allSum[1]);
 
-  const allCalData: IAllCalData = {
-    allSum,
-    allAvg,
-    allMax,
-    allMin,
-    allMaxMinusMin,
-    allMaxMinusAvg,
-    allAvgMinusMin,
+    allCalData.allAvg[0] = +(allCalData.allSum[0] / allCalData.allDataCount).toFixed(2);
+    allCalData.allAvg[1] = +Math.max.apply(Math, avgList).toFixed(2)
+    allCalData.allAvg[2] = avgList.findIndex(element => element === allCalData.allAvg[1]);
+
+    allCalData.allMax[0] = +Math.max.apply(Math, maxList).toFixed(2);
+    allCalData.allMax[1] = maxList.findIndex(element => element === allCalData.allMax[0]);
+
+    allCalData.allMin[0] = +Math.min.apply(Math, minList.filter(element => element !== 0)).toFixed(2);
+    allCalData.allMin[1] = minList.findIndex(element => element === allCalData.allMin[0]);
+
+    allCalData.allMaxMinusMin = allCalData.allMax[0] - allCalData.allMin[0];
+    allCalData.allMaxMinusAvg = allCalData.allMax[0] - allCalData.allAvg[0];
+    allCalData.allAvgMinusMin = allCalData.allAvg[0] - allCalData.allMin[0];
   };
 
   return allCalData;

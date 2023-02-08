@@ -1,19 +1,22 @@
 import styled from "styled-components";
-import { compareStore } from "../store/configureStore";
-import Victory from "./Victory";
+import { useCompareStore } from "../store/configureStore";
+import CompareData from "./CompareData";
+import { AnimatePresence } from "framer-motion";
 
 const Compare = () => {
-  const dataList = compareStore(state => state.data)
+  const comparatorList = useCompareStore(state => state.comparatorList)
   return (
-    <UpperCompare>
-      {dataList.map((data) => <Victory key={data.id} prop={data}/>)}
-    </UpperCompare>
+    <Wrap comparatorList={comparatorList.length}>
+      <AnimatePresence>
+        {comparatorList.map((data) => <CompareData key={data.id} prop={data}/>)}
+      </AnimatePresence>
+    </Wrap>
   )
 }
 
 export default Compare;
 
-const UpperCompare = styled.div`
+const Wrap = styled.div<{comparatorList: number} >`
   height: 70%;
   width: 100%;
   display: flex;
@@ -21,4 +24,9 @@ const UpperCompare = styled.div`
   align-items: center;
   background-color: #b2bec3;
   gap: 1%;
+  overflow-x: auto;
+
+  /* @media screen and (max-width: 1000px) {
+    gap: 1.5%;
+  } */
 `;

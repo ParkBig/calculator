@@ -1,37 +1,26 @@
 import { create } from "zustand";
-import { IChoice, ICount } from "../types/interface";
+import { ICount } from "../types/interface";
 
 export const defaultData = {
   sum: 0,
   avg: 0,
-  max: -Infinity,
-  min: Infinity,
-  maxMinusMin: -Infinity,
-  maxMinusAvg: -Infinity,
-  avgMinusMin: -Infinity,
+  max: null,
+  min: null,
+  maxMinusMin: null,
+  maxMinusAvg: null,
+  avgMinusMin: null,
   dataCount: 0,
 }
 
-export const compareStore = create<ICount>(set => ({
-  count: 1,
-  data: [{id: Date.now(), ...defaultData}],
-  inc: () => set(state => ({
-    data: [...state.data, {id: Date.now(), ...defaultData}],
-    count: state.data.length +1
+export const useCompareStore = create<ICount>(set => ({
+  comparatorList: [{id: Date.now(), ...defaultData}],
+  addComparator: () => set(state => ({
+    comparatorList: [...state.comparatorList, {id: Date.now(), ...defaultData}]
   })),
-  del: (id) => set(state => ({
-    data: state.data.filter(prop => prop.id !== id),
-    count: state.count - 1 
+  deleteComparator: (id) => set(state => ({
+    comparatorList: state.comparatorList.filter(prop => prop.id !== id)
   })),
-  updateData: (data) => set(state => ({
-    data: state.data.map(prop => (prop.id === data.id) ? data : prop )
+  updateComparator: (data) => set(state => ({
+    comparatorList: state.comparatorList.map(prop => (prop.id === data.id) ? data : prop )
   })),
-  resetData: (data) => set(state => ({
-    data: state.data.map(prop => (prop.id === data.id) ? {id: data.id, ...defaultData} : prop)
-  })),
-}));
-
-export const toggleChoiceStore = create<IChoice>(set => ({
-  isChoice: false,
-  toggleChoice: () => set(state => ({ isChoice: !state.isChoice })),
 }));

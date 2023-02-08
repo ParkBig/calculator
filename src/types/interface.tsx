@@ -1,56 +1,38 @@
-export interface IAllData {
-  id: number;
-  sum: number;
-  avg: number;
-  max: number;
-  min: number;
-  maxMinusMin: number;
-  maxMinusAvg: number;
-  avgMinusMin: number;
-  dataCount: number;
-}
-
 export interface IData {
-  x: number;
-  y: number;
+  order: number;
+  data: number;
 }
 
 export interface IForm {
   [key:string]: number | "";
 }
 
-export interface ICalData {
-  id: number
+export interface IAllData {
+  id: number;
   sum: number;
   avg: number;
-  max: number;
-  min: number;
-  maxMinusMin: number;
-  maxMinusAvg: number;
-  avgMinusMin: number;
+  max: number | null;
+  min: number | null;
+  maxMinusMin: number | null;
+  maxMinusAvg: number | null;
+  avgMinusMin: number | null;
   dataCount: number;
 }
 
 export interface IAllCalData {
-  allSum: number;
-  allAvg: number;
-  allMax: number;
-  allMin: number;
+  allSum: number[];
+  allAvg: number[];
+  allMax: number[];
+  allMin: number[];
   allMaxMinusMin: number;
   allMaxMinusAvg: number;
   allAvgMinusMin: number;
+  allDataCount: number;
 }
 
 export interface ICount {
-  count: number;
-  data: IAllData[];
-  inc: () => void;
-  del: (index: number) => void;
-  updateData: (data: IAllData) => void;
-  resetData: (data: IAllData) => void;
-}
-
-export interface IChoice {
-  isChoice: boolean;
-  toggleChoice: () => void;
+  comparatorList: IAllData[];
+  addComparator: () => void;
+  deleteComparator: (index: number) => void;
+  updateComparator: (data: IAllData) => void;
 }

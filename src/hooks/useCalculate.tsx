@@ -1,45 +1,38 @@
 import { useEffect } from "react";
-import { compareStore } from "../store/configureStore";
-import { ICalData, IData } from "../types/interface";
+import { useCompareStore } from "../store/configureStore";
+import { IAllData, IData } from "../types/interface";
 
 const useCalculate = (data: IData[], id: number) => {
-  const updateData = compareStore(state => state.updateData);
-
-  let sum: number = 0;
-  let avg: number;
-  let max: number;
-  let min: number;
-  let maxMinusMin: number;
-  let maxMinusAvg: number;
-  let avgMinusMin: number;
-  const dataCount: number = data.length;
-
-  if (data.length !==0 ) {
-    data.forEach(data => sum += data.y);
-  }
-  avg = (data.length === 0) ? sum : sum / data.length;
-  max = (data.length === 0) ? sum : Math.max.apply(Math, data.map(data => data.y));
-  min = (data.length === 0) ? sum : Math.min.apply(Math, data.map(data => data.y));
-  maxMinusMin = (data.length === 0) ? 0 : max - min;
-  maxMinusAvg = (data.length === 0) ? 0 : max - avg;
-  avgMinusMin = (data.length === 0) ? 0 : avg - min;
+  const updateComparator = useCompareStore(state => state.updateComparator);
   
-  const calData: ICalData = {
+  const dataCount: number = data.length;
+  
+  const calData: IAllData = {
     id,
-    sum,
-    avg,
-    max,
-    min,
-    maxMinusMin,
-    maxMinusAvg,
-    avgMinusMin,
+    sum: 0,
+    avg: 0,
+    max: 0,
+    min: 0,
+    maxMinusMin: 0,
+    maxMinusAvg: 0,
+    avgMinusMin: 0,
     dataCount,
   };
 
+  if (dataCount) {
+    data.forEach(data => calData.sum += +data.data.toFixed(2));
+    calData.avg = +(calData.sum / dataCount).toFixed(2);
+    calData.max = +Math.max.apply(Math, data.map(data => data.data)).toFixed(2);
+    calData.min = +Math.min.apply(Math, data.map(data => data.data)).toFixed(2);
+    calData.maxMinusMin = calData.max - calData.min;
+    calData.maxMinusAvg = calData.max - calData.avg;
+    calData.avgMinusMin = calData.avg - calData.min;
+  }
+
   useEffect(() => {
-    updateData(calData);
-  }, [data])
-  return calData
+    updateComparator(calData);
+  }, [data]);
+  return calData;
 }
 
 export default useCalculate;
