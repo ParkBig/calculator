@@ -87,4 +87,5 @@ const Explain = styled.div`
   @media screen and (max-width: 1024px) {
     font-size: 1em;
   }
+  transition: 0.2s;
 `;
