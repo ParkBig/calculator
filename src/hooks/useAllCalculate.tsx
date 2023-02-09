@@ -1,7 +1,5 @@
 import { IAllCalData, IAllData } from "../types/interface";
 
-// 솔트해서 0아닐떈 0번인데스 일떄는 1번인덱스로
-
 const useAllCalculate = (comparatorList: IAllData[]) => {
   const allCalData: IAllCalData = {
     allSum: [0, 0],

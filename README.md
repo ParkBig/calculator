@@ -25,7 +25,7 @@ PWA를 적용하여 웹 앱으로서 사용이 가능하며, 오프라인에서�
 ----
 ### `시연 영상`
 
-[유투브 시연영상 보기 클릭!](https://youtu.be/EFyhnMyDVec)
+[유투브 시연영상 보기 클릭!](https://youtu.be/5bWkeSoPVuc)
 
 ----
 

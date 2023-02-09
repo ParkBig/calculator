@@ -48,6 +48,12 @@ const CompareData = ({ prop }: { prop: IAllData }) => {
   const modalOpen = () => {
     setIsOpen(prev => !prev);
   };
+  const resetData = () => {
+    setIsOpen(prev => !prev);
+    if (window.confirm("초기화 하시겠습니까?")) {
+      setData([]);
+    }
+  }
   const getCsv = () => {
     setCsvData([...data, calData]);
     setIsOpen(prev => !prev);
@@ -56,12 +62,6 @@ const CompareData = ({ prop }: { prop: IAllData }) => {
       return false;
     };
   };
-  const resetData = () => {
-    setIsOpen(prev => !prev);
-    if (window.confirm("초기화 하시겠습니까?")) {
-      setData([]);
-    }
-  }
   const deleteTheData = () => {
     if (comparatorList.length === 1) return;
     if (window.confirm("삭제하시겠습니까?")) {
