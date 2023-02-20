@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
   }
   body {
-      font-family: 'Spoqa Han Sans Neo';
+      font-family: 'Shantell Sans', cursive;
       margin: 0px;
   }
   a {

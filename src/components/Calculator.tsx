@@ -7,7 +7,7 @@ const Calculator = () => {
       <ResultText>
         결과
       </ResultText>
-      <UpperButtons>
+      {/* <UpperButtons>
         <Buttons>
           <Btn>
             7
@@ -60,7 +60,7 @@ const Calculator = () => {
             +
           </OperatorBtn>
         </UpperOperatorButtons>
-      </UpperButtons>
+      </UpperButtons> */}
     </Wrap>
   )
 }

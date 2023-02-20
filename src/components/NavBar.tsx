@@ -112,7 +112,7 @@ const ClickToOpenCal = styled.div`
 `;
 const WrapCalculator = styled.div`
   width: 100%;
-  height: 370%;
+  height: 200%;
   top: 100%;
   position: absolute;
 `;
